@@ -1,0 +1,34 @@
+name: Deployments
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deployments
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm i -g caprover
+
+      - name: Deploy image to server
+        run: caprover deploy -u https://captain.herbertservers.com
+        env:
+          CAPROVER_PASSWORD: osaka:${{ secrets.APP_TOKEN }}
+          CAPROVER_APP: osaka
+          CAPROVER_BRANCH: main
