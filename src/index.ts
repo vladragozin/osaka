@@ -5,7 +5,14 @@ import exitHook from 'exit-hook';
 
 console.log('Starting bot with version:', Environment.VERSION);
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	]
+});
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user!.tag}`);
@@ -18,6 +25,18 @@ client.on('messageCreate', async message => {
 
 	if (message.content === '!ping') {
 		await message.reply('Pong!');
+	}
+
+	if (message.author.id === '247062965461843969') {
+		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
+
+		if (name) {
+			const isInitialCapitalized = name[1].startsWith('I');
+			const isFullyCapitalized = name[1].toUpperCase() === name[1];
+			const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
+
+			await message.reply(`${greeting} ${name[2]}`);
+		}
 	}
 });
 
