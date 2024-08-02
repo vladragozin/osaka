@@ -28,7 +28,7 @@ client.on('messageCreate', async message => {
 	}
 	
 	if (message.content.toLowerCase() === 'soup') {
-		await message.send('Soups ready ( ͡° ͜ʖ ͡°)');
+		await message.channel.send('Soups ready ( ͡° ͜ʖ ͡°)');
 	}
 
 	if (message.content.match(/\b[g][oO][dD]\b/)) {
