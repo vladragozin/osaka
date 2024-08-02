@@ -26,6 +26,9 @@ client.on('messageCreate', async message => {
 	if (message.content === '!ping') {
 		await message.reply('Pong!');
 	}
+	if (message.content === 'soup') {
+		await message.send('Soups ready ( ͡° ͜ʖ ͡°)');
+	}
 
 	if (message.author.id === '247062965461843969') {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
