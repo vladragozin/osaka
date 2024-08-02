@@ -26,9 +26,20 @@ client.on('messageCreate', async message => {
 	if (message.content === '!ping') {
 		await message.reply('Pong!');
 	}
-	if (message.content === 'soup') {
+	
+	if (message.content.toLowerCase() === 'soup') {
 		await message.send('Soups ready ( ͡° ͜ʖ ͡°)');
 	}
+
+	if (message.content.match(/\b[g][oO][dD]\b/)) {
+		let msg = message.content.match(/\b[g][oO][dD]\b/i);
+		let msgSplit = msg[0].split("");
+		msgSplit[0] = "G";
+		msg = msgSplit.join("");
+
+		await message.reply(`${msg}**`);
+	}
+
 
 	if (message.author.id === '247062965461843969') {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
