@@ -44,7 +44,7 @@ client.on('messageCreate', async message => {
 	}
 
 
-	if (message.author.id === '247062965461843969') {
+	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 
 		if (name) {
