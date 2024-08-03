@@ -33,11 +33,14 @@ client.on('messageCreate', async message => {
 
 	if (message.content.match(/\b[g][oO][dD]\b/)) {
 		let msg = message.content.match(/\b[g][oO][dD]\b/i);
-		let msgSplit = msg[0].split("");
-		msgSplit[0] = "G";
-		msg = msgSplit.join("");
+		
+		if (msg) {
+			let msgSplit = msg[0].split("");
+			msgSplit[0] = "G";
+			let reply = msgSplit.join("");
 
-		await message.reply(`${msg}**`);
+			await message.reply(`${reply}**`);
+		}
 	}
 
 
