@@ -27,7 +27,7 @@ client.on('messageCreate', async message => {
 		await message.reply('Pong!');
 	}
 	
-	if (message.content.toLowerCase() === 'soup') {
+	if (message.content.match(/\bsoup/i)) {
 		await message.channel.send('Soups ready ( ͡° ͜ʖ ͡°)');
 	}
 
