@@ -43,16 +43,18 @@ client.on('messageCreate', async message => {
 		}
 	}
 
+	if(message.author.id !== '713445497846759467') {
+		if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
+			const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 
-	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
-		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
+			if (name) {
+				const isInitialCapitalized = name[1].startsWith('I');
+				const isFullyCapitalized = name[1].toUpperCase() === name[1];
+				const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
 
-		if (name) {
-			const isInitialCapitalized = name[1].startsWith('I');
-			const isFullyCapitalized = name[1].toUpperCase() === name[1];
-			const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
-
-			await message.reply(`${greeting} ${name[2]}`);
+				await message.reply(`${greeting} ${name[2]}`);
+			}
+		
 		}
 	}
 });
