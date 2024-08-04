@@ -26,11 +26,13 @@ client.on('messageCreate', async message => {
 	// something something 
 	if (message.content === '!ping') {
 		await message.reply('69 ms');
+		console.log("Nice");
 	}
 
 	// Classic soup joke
 	if (message.content.match(/\bsoup/i)) {
 		await message.channel.send('Soups ready ( ͡° ͜ʖ ͡°)');
+		console.log("I hope it is tasty!");
 	}
 
 	// Auto correct those who think it is alright to not respect God's name 🙏
@@ -43,6 +45,7 @@ client.on('messageCreate', async message => {
 			let reply = msgSplit.join("");
 
 			await message.reply(`${reply}**`);
+			console.log("Infidel vanquished and converted");
 		}
 	}
 /*
@@ -62,6 +65,7 @@ client.on('messageCreate', async message => {
 				const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
 
 				await message.reply(`${greeting} ${name[2]}`);
+				console.log("Get dadded daddio");
 			}
 		
 		}
