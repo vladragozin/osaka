@@ -23,17 +23,20 @@ client.on('messageCreate', async message => {
 		return;
 	}
 
+	// something something 
 	if (message.content === '!ping') {
-		await message.reply('Pong!');
+		await message.reply('69 ms');
 	}
-	
+
+	// Classic soup joke
 	if (message.content.match(/\bsoup/i)) {
 		await message.channel.send('Soups ready ( ͡° ͜ʖ ͡°)');
 	}
 
+	// Auto correct those who think it is alright to not respect God's name 🙏
 	if (message.content.match(/\b[g][oO][dD]\b/)) {
 		let msg = message.content.match(/\b[g][oO][dD]\b/i);
-		
+		// Making sure it catches different variations of improprer use
 		if (msg) {
 			let msgSplit = msg[0].split("");
 			msgSplit[0] = "G";
@@ -42,7 +45,13 @@ client.on('messageCreate', async message => {
 			await message.reply(`${reply}**`);
 		}
 	}
+/*
+	 if(message.content.match(/\boh my god/i)) {
+		await message.react(message.guild.emojis.cache.get('1269759184396619857'));
+	}
+*/
 
+	// Dad joke (but making sure it does not target mtc)
 	if(message.author.id !== '713445497846759467') {
 		if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
 			const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
