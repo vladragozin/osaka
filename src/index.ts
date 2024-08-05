@@ -55,7 +55,7 @@ client.on('messageCreate', async message => {
 	}
 */
 
-	// Dad joke (but making sure it does not target mtc)
+	// Dad joke probability currently at 25%
 	if (randomInt(1,100) > 75 && message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 	
