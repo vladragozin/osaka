@@ -2,6 +2,7 @@ import 'source-map-support/register.js';
 import { Client, GatewayIntentBits } from 'discord.js';
 import { Environment } from './environment.js';
 import exitHook from 'exit-hook';
+import { randomInt } from 'crypto';
 
 console.log('Starting bot with version:', Environment.VERSION);
 
@@ -55,7 +56,7 @@ client.on('messageCreate', async message => {
 */
 
 	// Dad joke (but making sure it does not target mtc)
-	if (message.author.id !== '713445497846759467' && message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
+	if (randomInt(1,10) > 6 && message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 	
 		if (name) {
