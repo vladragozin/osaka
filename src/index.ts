@@ -55,7 +55,7 @@ client.on('messageCreate', async message => {
 	}
 */
 
-	// Dad joke probability currently at 45% + new stumbling mechanics!
+	// Dad joke probability currently at 35% + new stumbling mechanics!
 	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i) || message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 		const stumble = message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i);
