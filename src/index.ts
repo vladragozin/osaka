@@ -55,19 +55,27 @@ client.on('messageCreate', async message => {
 	}
 */
 
-	// Dad joke probability currently at 25%
-	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i) && randomInt(1,100) > 75) {
+	// Dad joke probability currently at 45% + new stumbling mechanics!
+	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i) || message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
+		const stumble = message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i);
+		let rand = randomInt(1,100);
+		console.log(`User rolled ${rand}`);
 	
-		if (name) {
+		if (name && rand > 55) {
 			const isInitialCapitalized = name[1].startsWith('I');
 			const isFullyCapitalized = name[1].toUpperCase() === name[1];
 			const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
 
 			await message.reply(`${greeting} ${name[2]}`);
 			console.log("Get dadded daddio");
+		}
+		if (stumble && rand < 15) {
+			await message.reply(`Hi -- wait shit`);
+			console.log("Oops");
 		}		
 		}
+
 });
 
 // Log out of the bot when the process exits
