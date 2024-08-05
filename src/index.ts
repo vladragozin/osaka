@@ -62,7 +62,7 @@ client.on('messageCreate', async message => {
 		let rand = randomInt(1,100);
 		console.log(`User rolled ${rand}`);
 	
-		if (name && rand >= 55) {
+		if (name && rand >= 70) {
 			const isInitialCapitalized = name[1].startsWith('I');
 			const isFullyCapitalized = name[1].toUpperCase() === name[1];
 			const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
