@@ -70,7 +70,7 @@ client.on('messageCreate', async message => {
 			await message.reply(`${greeting} ${name[2]}`);
 			console.log("Get dadded daddio");
 		}
-		if (stumble && rand <= 15) {
+		if (stumble && rand <= 5) {
 			await message.reply(`Hi -- wait shit`);
 			console.log("Oops");
 		}		
