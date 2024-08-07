@@ -9,7 +9,7 @@ import fs from 'fs';
 console.log('Starting bot with version:', Environment.VERSION);
 
 // Read in dad jokes
-const dadJokes = new RandomFile(fs.readFileSync('data/dad_jokes.txt', 'utf8'), /\r?\n/g);
+const dadJokes = new RandomFile(fs.readFileSync('data/dad_jokes.txt', 'utf8'), /\r?\n\r?\n/g);
 
 const client = new Client({
 	intents: [
