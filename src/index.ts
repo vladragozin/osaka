@@ -8,8 +8,11 @@ import fs from 'fs';
 
 console.log('Starting bot with version:', Environment.VERSION);
 
-// Read in dad jokes
+// Read in text files
 const dadJokes = new RandomFile(fs.readFileSync('data/dad_jokes.txt', 'utf8'), /\r?\n\r?\n/g);
+const catFacts = new RandomFile(fs.readFileSync('data/cat_facts.txt', 'utf8'), /\r?\n/g);
+const catJokes = new RandomFile(fs.readFileSync('data/cat_jokes.txt', 'utf8'), /\r?\n/g);
+const fortunes = new RandomFile(fs.readFileSync('data/fortunes.txt', 'utf8'), /\r?\n/g);
 
 const client = new Client({
 	intents: [
@@ -86,6 +89,27 @@ client.on('messageCreate', async message => {
 		const joke = dadJokes.next();
 		await message.reply(joke);
 		console.log("Dad joked on them kids!");
+	}
+
+	// Cat facts
+	if (message.content.match(`!catfact`)){
+		const fact = catFacts.next();
+		await message.reply(fact);
+		console.log("Miau meow miau meow mow meiaow 🐱");
+	}
+
+	// Cat jokes
+	if (message.content.match(`!catjoke`)){
+		const joke = catJokes.next();
+		await message.reply(joke);
+		console.log("Meow meow meow	meow meow meow (Meow meow meow) 😹");
+	}
+
+	// Fortunes
+	if (message.content.match(`!fortune`)){
+		const fortune = fortunes.next();
+		await message.reply(fortune);
+		console.log("Fortunes are in order");
 	}
 });
 
