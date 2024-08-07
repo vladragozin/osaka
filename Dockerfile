@@ -29,6 +29,7 @@ COPY --from=workspace-pruned /srv/app/node_modules ./node_modules
 COPY --from=workspace-build /srv/app/tsconfig*.json ./
 COPY --from=workspace-build /srv/app/package*.json ./
 COPY --from=workspace-build /srv/app/dist ./dist
+COPY data ./data
 
 ARG CAPROVER_GIT_COMMIT_SHA=${CAPROVER_GIT_COMMIT_SHA}
 ENV VERSION=${CAPROVER_GIT_COMMIT_SHA}

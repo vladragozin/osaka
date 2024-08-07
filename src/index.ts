@@ -3,8 +3,13 @@ import { Client, GatewayIntentBits } from 'discord.js';
 import { Environment } from './environment.js';
 import exitHook from 'exit-hook';
 import { randomInt } from 'crypto';
+import { RandomFile } from './random.js';
+import fs from 'fs';
 
 console.log('Starting bot with version:', Environment.VERSION);
+
+// Read in dad jokes
+const dadJokes = new RandomFile(fs.readFileSync('data/dad_jokes.txt', 'utf8'), /\r?\n/g);
 
 const client = new Client({
 	intents: [
@@ -49,11 +54,11 @@ client.on('messageCreate', async message => {
 			console.log("Infidel vanquished and converted");
 		}
 	}
-/*
+
 	 if(message.content.match(/\boh my god/i)) {
-		await message.react(message.guild.emojis.cache.get('1269759184396619857'));
+		await message.react('<:omg:1270593453230919751>');
 	}
-*/
+
 
 	// Dad joke probability currently at 30% + new stumbling mechanics!
 	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i) || message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i)) {
@@ -74,8 +79,14 @@ client.on('messageCreate', async message => {
 			await message.reply(`Hi -- wait shit`);
 			console.log("Oops");
 		}		
-		}
+	}
 
+	// The REAL dad joke command
+	if (message.content.match(`!dadjoke`)){
+		const joke = dadJokes.next();
+		await message.reply(joke);
+		console.log("Dad joked on them kids!");
+	}
 });
 
 // Log out of the bot when the process exits
