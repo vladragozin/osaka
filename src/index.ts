@@ -32,7 +32,7 @@ client.on('messageCreate', async message => {
 		return;
 	}
 
-	// something something 
+	// something something
 	if (message.content === '!ping') {
 		await message.reply('69 ms');
 		console.log("Nice");
@@ -67,10 +67,10 @@ client.on('messageCreate', async message => {
 	if (message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i) || message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i)) {
 		const name = message.content.match(/^(i\'?m|i am) +([^\.\,\?\!\n]{2,})/i);
 		const stumble = message.content.match(/^(i) +([^\.\,\?\!\n]{2,})/i);
-		let rand = randomInt(1,100);
+		let rand = randomInt(1,1000);
 		console.log(`User rolled ${rand}`);
-	
-		if (name && rand >= 70) {
+
+		if (name && rand >= 800) { // 80%
 			const isInitialCapitalized = name[1].startsWith('I');
 			const isFullyCapitalized = name[1].toUpperCase() === name[1];
 			const greeting = isFullyCapitalized ? 'HI' : (isInitialCapitalized ? 'Hi' : 'hi');
@@ -78,10 +78,11 @@ client.on('messageCreate', async message => {
 			await message.reply(`${greeting} ${name[2]}`);
 			console.log("Get dadded daddio");
 		}
-		if (stumble && rand <= 5) {
+
+		if (stumble && rand <= 10) { // 1%
 			await message.reply(`Hi -- wait shit`);
 			console.log("Oops");
-		}		
+		}
 	}
 
 	// The REAL dad joke command
